@@ -1,22 +1,44 @@
 console.log("script loaded");
 
-let gridSize = prompt("Enter number of squares per side");
-gridSize = parseInt(gridSize);
-
 const container = document.querySelector(".container");
-container.innerHTML = ""; // Clear container if reused
-container.style.width = "480px"; // Or any fixed value you like
-container.style.height = "480px";
+const button = document.querySelector("#button");
 
-const squareSize = 480 / gridSize;
+function createGrid(gridSize)
+{
+    container.innerHTML = ""; // Clear container if reused
+    container.style.width = "480px"; // Or any fixed value you like
+    container.style.height = "480px";
 
-for (let i = 0; i < gridSize * gridSize; i++) {
-    const square = document.createElement("div");
-    square.classList.add("square");
-    square.style.width = `${squareSize}px`;
-    square.style.height = `${squareSize}px`;
-    square.addEventListener("mouseenter", () => {
-        square.style.backgroundColor = "black";
-    });
-    container.appendChild(square);
+    const squareSize = 480 / gridSize;
+
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+        square.addEventListener("mouseenter", () => {
+            square.style.backgroundColor = "black";
+        });
+        container.appendChild(square);
+    }
 }
+
+button.addEventListener("click", () => {
+    
+
+    let shouldLoop = true;
+    while(shouldLoop)
+    {
+        let gridSize = prompt("Enter number of squares per side");
+        gridSize = parseInt(gridSize);
+
+        if((gridSize < 1) || (gridSize > 100))
+        {
+            alert("Enter a number less than 100");
+        }
+        else {
+            createGrid(gridSize);
+            shouldLoop = false;
+        }
+    }
+})
