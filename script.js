@@ -17,7 +17,10 @@ function createGrid(gridSize)
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;
         square.addEventListener("mouseenter", () => {
-            square.style.backgroundColor = "black";
+            if (i % 2 == 0)
+            {
+                square.style.backgroundColor = "black";
+            }else square.style.backgroundColor = "blue";
         });
         container.appendChild(square);
     }
