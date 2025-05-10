@@ -17,7 +17,7 @@ body {
 }
 
 .square {
-    border: 1px solid black;
+    border: 1px solid indigo;
     box-sizing: border-box;
     background-color: white;
 }
